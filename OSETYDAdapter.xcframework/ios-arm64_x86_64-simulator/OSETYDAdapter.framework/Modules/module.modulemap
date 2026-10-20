@@ -1,0 +1,6 @@
+framework module OSETYDAdapter {
+  umbrella header "OSETYDAdapter.h"
+  export *
+
+  module * { export * }
+}
