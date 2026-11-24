@@ -1,39 +1,23 @@
 Pod::Spec.new do |s|
-  s.name         = "OSETYDAdapter"
-  s.version      = "2.0.1.0"
-  s.summary      = "AdSet广告对接适配器类"
-  s.description  = <<-DESC
-                    OSETYDAdapter 是一个专业的广告聚合SDK，提供高效的广告展示和收益优化功能。
-                    DESC
-  s.homepage     = "https://github.com/OSETSDK/OSETYDAdapter"
-  s.license      = { :type => "MIT", :file => "LICENSE" }
-  s.author       = { 'shenshi' => 'yaohaofei@shenshiads.com' }
-  
-  # 设置最低支持版本
-  s.ios.deployment_target = '12.0'
-  
-  # 源文件配置
-  s.source       = {
-    :git => 'https://github.com/OSETSDK/OSETYDAdapter.git',
-    :tag => s.version.to_s
-  }
-  
-  # 主框架文件
-  # 检查 AdSetQD*Adapter.podspec 关键字段
-  s.vendored_frameworks = 'OSETYDAdapter.xcframework'
-  
-  # 系统框架依赖
-  s.frameworks = "Foundation", "UIKit"
-  
-  # 资源文件
-  # Swift版本设置
-  s.swift_version = '5.0'
-  
-  # ================= 第三方依赖库 =================
+  s.name             = 'OSETYDAdapter'
+  s.version          = '2.0.1.1'
+  s.summary          = '有道移动广告 SDK 适配器'
+  s.description      = '把 YDADSDK 3.0.1 的开屏、Native、NativeData 和激励视频接入 OSET 聚合层。'
+  s.homepage         = 'https://github.com/OSETSDK/OSETYDAdapter'
+  s.license          = { :type => 'MIT', :file => 'LICENSE' }
+  s.author           = { 'shenshi' => 'yaohaofei@shenshiads.com' }
 
-  s.dependency 'OSETCoreAd','>= 7.0.3.2'
+  s.source           = { :git => 'https://github.com/OSETSDK/OSETYDAdapter.git', :tag => s.version.to_s }
+
+  s.platform         = :ios, '12.0'
+  s.swift_versions   = '5.0'
+  s.vendored_frameworks = 'OSETYDAdapter.xcframework'
+  s.frameworks        = 'Foundation', 'UIKit'
+
+  # 保持既有已发布版本的 Core 下限，避免接入缺少所需协议的旧基座。
+  s.dependency 'OSETCoreAd', '>= 7.0.3.2'
   s.dependency 'YDADSDK', '= 3.0.1'
 
+  # Core 通过 NSClassFromString 查找适配器类；静态库必须把 Objective-C 类强制拉进宿主。
   s.user_target_xcconfig = { 'OTHER_LDFLAGS' => '-ObjC' }
-
 end
