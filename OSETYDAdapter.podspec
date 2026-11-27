@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name             = 'OSETYDAdapter'
-  s.version          = '2.0.1.1'
+  s.version          = '2.0.1.2'
   s.summary          = '有道移动广告 SDK 适配器'
   s.description      = '把 YDADSDK 3.0.1 的开屏、Native、NativeData 和激励视频接入 OSET 聚合层。'
   s.homepage         = 'https://github.com/OSETSDK/OSETYDAdapter'
